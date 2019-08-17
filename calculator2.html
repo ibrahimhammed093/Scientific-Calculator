@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CALCULATOR2</title>
+</head>
+<body>
+	<style type="">
+		#receiver{
+			background-color:#33ccff;
+			height:400px;
+			width:270px;
+			border-radius:15px;
+
+		}
+		.screen{
+			margin-top: 20px;
+			background-color:#ffff99;
+			width:270px;
+			height:40px;
+			position: relative;
+
+		}
+		.screen input{
+			height:50px;
+			width:266px;
+			color:black;
+			background-color:#e5dfa0;
+			font-size: 19px;
+			text-align: right;
+			padding-top:-20px;
+		}
+		.btns{
+			padding-top:20px;
+		}
+		.button{
+			outline:none;
+			width:40px;
+			height: 25px;
+			border:none;
+			border-radius:10px;
+			cursor: pointer;
+		}
+		.button.gold{
+			color:#ffffff;
+			background-color:#000000;
+			border-bottom:2px solid #647489;
+			border-top: 2px black
+		}
+		.button.lead{
+			color:#ffffff;
+			background-color:#647489;
+			border-bottom: 2px solid #000000;
+		}
+		.button.red{
+			color:#ffffff;
+			background-color:#ff0000;
+			border-bottom: 2px solid #647489;
+		}
+	</style>
+<center>
+	<div id="receiver">
+	
+	    <div class="screen"><input type="text" id="scn" size="30" readonly></div>		
+		<div class="btns">
+			<p>
+				<input type="button" name="" value="rad" class="button gold" onclick="rad()">
+				<input type="button" name="" value="deg" class="button gold" onclick="deg()">
+			</p>
+			<p>
+		<input type="button" name="" value="SIN" class="button gold" onclick="boss1()">
+		<input type="button" name="" value="COS" class="button gold" onclick="boss2()">
+		<input type="button" name="" value="TAN" class="button gold" onclick="boss3()">
+		<input type="button" name="" value="(-)" class="button gold">
+		<input type="button" name="" value="CLR" class="button gold">
+	</p>
+	<p>
+		<input type="button" name="" value="SQRT" class="button gold" onclick="boss5()">
+		<input type="button" name="" value="SQR" class="button gold">
+		<input type="button" name="" value="^" class="button gold" onclick="pow('^')">
+		<input type="button" name="" value="LOG" class="button gold" onclick="boss4()">
+		<input type="button" name="" value="Pi" class="button gold" onclick="boss6()">
+	</p>
+	<p>
+		<input type="button" name="" value="RCL" class="button gold">
+		<input type="button" name="" value="(" class="button gold" onclick="isymbol('(')">
+		<input type="button" name="" value=")" class="button gold" onclick="isymbol(')')">
+		<input type="button" name="" value="M+" class="button gold">
+		<input type="button" name="" value="MOD" class="button gold">
+	</p>
+	<p>
+		<input type="button" name="" value="7" class="button lead" onclick="number('7')">
+		<input type="button" name="" value="8" class="button lead" onclick="number('8')">
+		<input type="button" name="" value="9" class="button lead" onclick="number('9')">
+		<input type="button" name="" value="DEL" class="button red" onclick="Delete()">
+		<input type="button" name="" value="ON" class="button red" onclick="start('ON')">
+	</p>
+	<p>
+		<input type="button" name="" value="4" class="button lead" onclick="number('4')">
+		<input type="button" name="" value="5" class="button lead" onclick="number('5')">
+		<input type="button" name="" value="6" class="button lead" onclick="number('6')">
+		<input type="button" name="" value="*" class="button lead" onclick="isymbol('*')">
+		<input type="button" name="" value="/" class="button lead" onclick="isymbol('/')">
+	</p>
+	<p>
+		<input type="button" name="" value="1" class="button lead" onclick="number('1')">
+		<input type="button" name="" value="2" class="button lead" onclick="number('2')">
+		<input type="button" name="" value="3" class="button lead" onclick="number('3')">
+		<input type="button" name="" value="+" class="button lead" onclick="isymbol('+')">
+		<input type="button" name="" value="-" class="button lead" onclick="isymbol('-')">
+	</p>
+	<p>
+		<input type="button" name="" value="0" class="button lead"onclick="number('0')" >
+		<input type="button" name="" value="." class="button lead" onclick="number('.')">
+		<input type="button" name="" value="EXP" class="button lead" onclick="boss7()">
+		<input type="button" name="" value="Ans" class="button lead">
+		<input type="button" name="" value="=" class="button lead" onclick="arith()">
+	</p>
+		</div>
+
+	</div>
+</center>
+
+</body>
+</html>
+<script type="">
+	var symbol, fvalue;
+	var svalue="";
+	var myarit="";
+	var begin;
+		function number(h) {
+			
+				scn.value += h;
+				if(myarit!=""){
+				svalue=parseFloat(svalue+=h);
+				}
+		}
+		function isymbol(s) {
+			// alert();
+			fvalue=parseFloat(scn.value);
+			myarit =s;
+			scn.value+=s
+			// scn.value = "";
+			// fvalue = parseFloat(scn.value);
+			// scn.value += s;
+			// symbol = s;
+		}
+		function arith(){
+			//svalue = parseFloat(scn.value);
+			// alert();
+			if (myarit == '+') {
+				
+				scn.value = fvalue + svalue;
+				fvalue=scn.value;
+				svalue="";
+			}
+			else if (myarit == '-') {
+				scn.value = fvalue - svalue;
+				fvalue = scn.value;
+				svalue="";
+			} 
+			else if (myarit == '*') {
+				scn.value = fvalue * svalue;
+				fvalue = scn.value;
+				svalue="";
+			}
+			else if (myarit == '/') {
+				scn.value = fvalue / svalue;
+				fvalue = scn.value;
+				svalue="";
+			}
+			// else if (myarit == '^') {
+			// 	scn.value = fvalue ^ svalue
+			// 	fvalue = scn.value;
+			// 	svalue="";
+			// }
+			
+				myarit="";
+		}
+		function boss1(){
+			scn.value = Math.sin(scn.value);
+		}
+		function boss2() {
+			scn.value = Math.cos(scn.value);
+		}
+		function boss3() {
+			scn.value = Math.tan(scn.value);
+		}
+		function boss4() {
+			scn.value = Math.log10(scn.value);
+		}
+		function boss5(){
+			scn.value = Math.sqrt(scn.value);
+		}
+		function boss6() {
+			scn.value = Math.PI;
+		}
+		function boss7(){
+			scn.value = Math.exp(scn.value);
+		}
+		function start() {
+			start.value == "start";
+			scn.value = "";
+		}
+		function Delete() {
+			// scn.value = "";
+			scn.value = scn.value.slice(0, -1)
+		}
+		function deg(){
+			scn.value=scn.value/180;
+		}
+		function rad() {
+			scn.value=scn.value*180;
+		}
+		function pow() {
+		scn.value = pow(scn.value);
+		}
+</script>
